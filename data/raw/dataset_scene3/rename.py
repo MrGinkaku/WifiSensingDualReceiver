@@ -1,7 +1,7 @@
 import os
 
 # --- KONFIGURASI UTAMA ---
-base_folder = r'C:\Users\Hp\Documents\SKRIPSI !!!!!\TA\TA_saya\dataset\Dataset_scene3'
+base_folder = r'C:\Users\Hp\Documents\SKRIPSI !!!!!\TA\TA_saya\dataset\Dataset_scene2'
 subfolders = ['dataset RX 1', 'dataset RX 2']
 # --- SELESAI KONFIGURASI ---
 
@@ -9,9 +9,9 @@ def rename_multiple_batches(direktori):
     print(f"\n=== Mulai Rename di: {os.path.abspath(direktori)} ===")
 
     batch_configs = [
-        (91, 105, "JL", 1),   # data91–105 → JL_1–15 (Jalan)
-        (106, 120, "BD", 1),  # data106–120 → BD_1–15 (Berdiri)
-        (121, 135, "DD", 1),  # data121–135 → DD_1–15 (Duduk)
+        (46, 60, "JL", 1),   # data46–60 → JL_1–15
+        (61, 75, "DD", 1),   # data61–75 → DD_1–15
+        (76, 90, "BD", 1),   # data76–90 → BD_1–15
     ]
 
     for start, end, prefix, suffix_start in batch_configs:

@@ -1,25 +1,30 @@
 import os
 
 # --- KONFIGURASI UTAMA ---
-base_folder = r'C:\Users\Hp\Documents\SKRIPSI !!!!!\TA\TA_saya\dataset\Dataset_scene2'
+base_folder = r'C:\Users\Hp\Documents\SKRIPSI !!!!!\TA\TA_saya\dataset\Dataset_scene1'
 subfolders = ['dataset RX 1', 'dataset RX 2']
 # --- SELESAI KONFIGURASI ---
 
 def rename_multiple_batches(direktori):
     print(f"\n=== Mulai Rename di: {os.path.abspath(direktori)} ===")
+    
+    # Batch 1: data1.csv - data15.csv  -> JL_1.csv - JL_15.csv
+    for i in range(1, 16): 
+        old_name = f"data{i}.csv"
+        new_name = f"JL_{i}.csv"
+        _rename_file(direktori, old_name, new_name)
 
-    batch_configs = [
-        (46, 60, "JL", 1),   # data46–60 → JL_1–15
-        (61, 75, "DD", 1),   # data61–75 → DD_1–15
-        (76, 90, "BD", 1),   # data76–90 → BD_1–15
-    ]
+    # Batch 2: data16.csv - data30.csv -> DD_1.csv - DD_15.csv
+    for i in range(1, 16): 
+        old_name = f"data{15 + i}.csv"
+        new_name = f"DD_{i}.csv"
+        _rename_file(direktori, old_name, new_name)
 
-    for start, end, prefix, suffix_start in batch_configs:
-        print(f"\n-- Batch {prefix}: data{start}.csv to data{end}.csv → {prefix}_{suffix_start}.csv ...")
-        for i, number in enumerate(range(start, end + 1)):
-            old_name = f"data{number}.csv"
-            new_name = f"{prefix}_{suffix_start + i}.csv"
-            _rename_file(direktori, old_name, new_name)
+    # Batch 3: data31.csv - data45.csv -> BD_1.csv - BD_15.csv
+    for i in range(1, 16): 
+        old_name = f"data{30 + i}.csv"
+        new_name = f"BD_{i}.csv"
+        _rename_file(direktori, old_name, new_name)
 
 def _rename_file(folder, old_name, new_name):
     path_lama = os.path.join(folder, old_name)
